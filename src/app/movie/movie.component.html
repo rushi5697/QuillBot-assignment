@@ -1,0 +1,210 @@
+
+    <div class="row movie_main ">
+        <div class="col-lg-12">
+            <div class="sometask mt-4 ">
+                <div class="float-start">
+                    <i class="fa fa-search" (click)="showSearchBox()"></i>
+                    <input [class]="searchBoxClass" type="text" [(ngModel)]="searchText" name="search"  placeholder="Title,Movies,Keyword">
+                  <i class="fa fa-close" (click)="closeSearchBox()" *ngIf="searchIconStatus" ></i>
+                </div>
+                <div class="float-end mt-2">
+                  <img src="./assets/sun.png" class="sun" alt="">
+                    <span class="fa fa-ellipsis-v fs-3 text-light"></span>
+                </div>
+            </div>
+        </div>
+
+<!--  Description container start -->
+        <div class="col-12 col-md-12 description animate__animated animate__zoomIn" *ngIf="row1Status">
+            <div class="row" >
+                <div class="col-12 col-md-4 img-container">
+            <img src={{data[id].Poster}} class="w-100 desc_img" alt="">
+                </div>
+                <div class="col-12 col-md-8 p-3" >
+                    <span class="desc_heading">{{data[id].Title}}</span>
+                    <br>
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <div class="progress" style="height:8px">
+                                <div class="progress-bar bg-info"  role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <span class="desc_sub">Year:</span>
+                            <span class="desc_sub left m-2">{{data[id].Year}}</span>
+                            <br>
+                            <span class="desc_sub white-space-nowrap">Running Time:</span>
+                            <span class="desc_sub m-2 white-space-nowrap left ">{{data[id].Runtime}}</span>
+                            <br>
+                            <span class="desc_sub white-space-nowrap">Directed By:</span>
+                            <span class="desc_sub white-space-nowrap m-2 left">{{data[id].Director}}</span>
+                            <br>
+                            <span class="desc_sub white-space-nowrap">Language:</span>
+                            <span class="desc_sub white-space-nowrap m-2 left">{{data[id].Language}}</span>
+                        </div>
+                        <div class="col-6 col-md-12">
+                            <p class="desc_para ">{{data[id].Plot}}</p>
+                        </div>
+                    </div>
+               <div class="row sm-position">
+                <div class="col-3 col-md-3">
+                    <button class="btn1">Play Movie</button>
+                </div>
+                <div class="col-3 col-md-3 ms-2">
+                    <button class="btn2 ">Watch Trailer</button>
+                </div>
+               </div>
+                </div>
+            </div>
+        </div>
+      <!--  Description container end -->
+
+<!--  first row  -->
+      <div class="grid-container">
+        <div class="card1 mt-4"  (click)="getdata(movie.id)" *ngFor="let movie of firstRowData | filter:searchText; let item=index" >
+            <img src={{movie.Poster}} class="w-100" alt="">
+            <h6 class="card-heading">{{movie.Title}}</h6>
+            <h6>
+                <span class="fa fa-play-circle fs-3 "></span>
+                <span class="fa fa-plus-circle fs-3 "></span>
+            </h6>
+        </div>
+      </div>
+<!--      first row end-->
+
+
+<!--  second  Description Container-->
+      <div class="col-12 mt-4 col-md-12 description animate__animated animate__zoomIn" *ngIf="row2Status">
+        <div class="row" >
+            <div class="col-12 col-md-4 img-container">
+        <img src={{data[id].Poster}} class="w-100 desc_img" alt="">
+            </div>
+            <div class="col-12 col-md-8 p-3" >
+                <span class="desc_heading">{{data[id].Title}}</span>
+                <br>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <div class="progress" style="height:8px">
+                            <div class="progress-bar bg-info"  role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <span class="desc_sub">Year:</span>
+                        <span class="desc_sub left m-2">{{data[id].Year}}</span>
+                        <br>
+                        <span class="desc_sub white-space-nowrap">Running Time:</span>
+                        <span class="desc_sub m-2 white-space-nowrap left ">{{data[id].Runtime}}</span>
+                        <br>
+                        <span class="desc_sub white-space-nowrap">Directed By:</span>
+                        <span class="desc_sub white-space-nowrap m-2 left">{{data[id].Director}}</span>
+                        <br>
+                        <span class="desc_sub white-space-nowrap">Language:</span>
+                        <span class="desc_sub white-space-nowrap m-2 left">{{data[id].Language}}</span>
+                    </div>
+                    <div class="col-6 col-md-12">
+                        <p class="desc_para ">{{data[id].Plot}}</p>
+                    </div>
+                </div>
+           <div class="row sm-position">
+            <div class="col-3 col-md-3">
+                <button class="btn1">Play Movie</button>
+            </div>
+            <div class="col-3 col-md-3 ms-2">
+                <button class="btn2 ">Watch Trailer</button>
+            </div>
+           </div>
+            </div>
+        </div>
+    </div>
+
+<!--      second description container end -->
+
+<!-- second row -->
+    <div class="grid-container">
+        <div class="card1 mt-4"  (click)="getdata2(movie.id)" *ngFor="let movie of secondRowData | filter:searchText; let item=index" >
+            <img src={{movie.Poster}} class="w-100" alt="">
+            <h6 class="card-heading">{{movie.Title}}</h6>
+            <h6>
+                <span class="fa fa-play-circle fs-3 "></span>
+                <span class="fa fa-plus-circle fs-3 "></span>
+            </h6>
+        </div>
+      </div>
+      <!-- second row end-->
+
+<!--Third description container-->
+      <div class="col-12 mt-4 col-md-12 description animate__animated animate__zoomIn" *ngIf="row3Status">
+        <div class="row" >
+            <div class="col-12 col-md-4 img-container">
+        <img src={{data[id].Poster}} class="w-100 desc_img" alt="">
+            </div>
+            <div class="col-12 col-md-8 p-3" >
+                <span class="desc_heading">{{data[id].Title}}</span>
+                <br>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <div class="progress" style="height:8px">
+                            <div class="progress-bar bg-info"  role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <span class="desc_sub">Year:</span>
+                        <span class="desc_sub left m-2">{{data[id].Year}}</span>
+                        <br>
+                        <span class="desc_sub white-space-nowrap">Running Time:</span>
+                        <span class="desc_sub m-2 white-space-nowrap left ">{{data[id].Runtime}}</span>
+                        <br>
+                        <span class="desc_sub white-space-nowrap">Directed By:</span>
+                        <span class="desc_sub white-space-nowrap m-2 left">{{data[id].Director}}</span>
+                        <br>
+                        <span class="desc_sub white-space-nowrap">Language:</span>
+                        <span class="desc_sub white-space-nowrap m-2 left">{{data[id].Language}}</span>
+                    </div>
+                    <div class="col-6 col-md-12">
+                        <p class="desc_para ">{{data[id].Plot}}</p>
+                    </div>
+                </div>
+           <div class="row sm-position">
+            <div class="col-3 col-md-3">
+                <button class="btn1">Play Movie</button>
+            </div>
+            <div class="col-3 col-md-3 ms-2">
+                <button class="btn2 ">Watch Trailer</button>
+            </div>
+           </div>
+            </div>
+        </div>
+    </div>
+
+      <!--Third description container end-->
+
+
+
+<!--Third row-->
+      <div class="grid-container">
+        <div class="card1 mt-4"  (click)="getdata3(movie.id)" *ngFor="let movie of thirdRowData | filter:searchText; let item=index" >
+            <img src={{movie.Poster}} class="w-100" alt="">
+            <h6 class="card-heading">{{movie.Title}}</h6>
+            <h6>
+                <span class="fa fa-play-circle fs-3 "></span>
+                <span class="fa fa-plus-circle fs-3 "></span>
+            </h6>
+        </div>
+      </div>
+
+      <!--Third row end-->
+
+    </div>
+
